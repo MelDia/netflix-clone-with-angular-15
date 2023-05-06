@@ -1,0 +1,113 @@
+<app-navbar [dataMovie]="dataMovie"></app-navbar>
+<app-banner [dataMovie]="dataMovie"></app-banner>
+
+<section class="container">
+    <div class="card">
+        <div class="card-text">
+            <h2 class="card-title">Trending of today</h2>
+            <a class="card-subtitle">Explore all > </a>
+        </div>
+        <div class="card-item-content">
+            <div *ngFor="let movie of dataMovie | slice:10:15; let i = index; " class="item-card-container">
+                <div class="item-card">
+                    <img width="240px" src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt=""
+                        class="item-card-img">
+                    <div class="title-box"></div>
+                    <h6 *ngIf="movie.name === undefined " class="card-title">{{movie.title}}</h6>
+                    <h6 *ngIf="movie.name !== undefined " class="card-title">{{movie.name}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-text">
+            <h2 class="card-title">Thriller movies for you</h2>
+            <a class="card-subtitle">Explore all > </a>
+        </div>
+        <div class="card-item-content">
+            <div *ngFor="let movie of dataThriller | slice:10:15; let i = index; " class="item-card-container">
+                <div class="item-card">
+                    <img width="240px" src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt=""
+                        class="item-card-img">
+                    <div class="title-box"></div>
+                    <h6 *ngIf="movie.name === undefined " class="card-title">{{movie.title}}</h6>
+                    <h6 *ngIf="movie.name !== undefined " class="card-title">{{movie.name}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-text">
+            <h2 class="card-title">Action movies</h2>
+            <a class="card-subtitle">Explore all > </a>
+        </div>
+        <div class="card-item-content">
+            <div *ngFor="let movie of dataAction | slice:10:15; let i = index; " class="item-card-container">
+                <div class="item-card">
+                    <img width="240px" src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt=""
+                        class="item-card-img">
+                    <div class="title-box"></div>
+                    <h6 *ngIf="movie.name === undefined " class="card-title">{{movie.title}}</h6>
+                    <h6 *ngIf="movie.name !== undefined " class="card-title">{{movie.name}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-text">
+            <h2 class="card-title">Our SciFi movies selection for you</h2>
+            <a class="card-subtitle">Explore all > </a>
+        </div>
+        <div class="card-item-content">
+            <div *ngFor="let movie of dataSciFi | slice:10:15; let i = index; " class="item-card-container">
+                <div class="item-card">
+                    <img width="240px" src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt=""
+                        class="item-card-img">
+                    <div class="title-box"></div>
+                    <h6 *ngIf="movie.name === undefined " class="card-title">{{movie.title}}</h6>
+                    <h6 *ngIf="movie.name !== undefined " class="card-title">{{movie.name}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-text">
+            <h2 class="card-title">Adventure movies</h2>
+            <a class="card-subtitle">Explore all > </a>
+        </div>
+        <div class="card-item-content">
+            <div *ngFor="let movie of dataAdventure | slice:10:15; let i = index; " class="item-card-container">
+                <div class="item-card">
+                    <img width="240px" src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt=""
+                        class="item-card-img">
+                    <div class="title-box"></div>
+                    <h6 *ngIf="movie.name === undefined " class="card-title">{{movie.title}}</h6>
+                    <h6 *ngIf="movie.name !== undefined " class="card-title">{{movie.name}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-text">
+            <h2 class="card-title">Animation selection</h2>
+            <a class="card-subtitle">Explore all > </a>
+        </div>
+        <div class="card-item-content">
+            <div *ngFor="let movie of dataAnimation | slice:10:15; let i = index; " class="item-card-container">
+                <div class="item-card">
+                    <img width="240px" src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt=""
+                        class="item-card-img">
+                    <div class="title-box"></div>
+                    <h6 *ngIf="movie.name === undefined " class="card-title">{{movie.title}}</h6>
+                    <h6 *ngIf="movie.name !== undefined " class="card-title">{{movie.name}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

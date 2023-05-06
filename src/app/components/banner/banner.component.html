@@ -1,0 +1,25 @@
+<section class="carousel" *ngFor="let movie of dataMovie; let i = index; ">
+    <ng-container>
+
+        <img *ngIf="i === currentSlide" class="banner-image" @carouselAnimation
+            src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="Poster">
+
+        <div *ngIf="i === currentSlide" class="info-container">
+            <div class="info-logo">
+                <img class="symbol" src="./assets/img/symbol.png" alt="logo">
+                <div class="media-type">{{movie.media_type}}</div>
+            </div>
+            <h2 class="title">{{movie.title}}</h2>
+            <p class="overview">{{movie.overview}}</p>
+        </div>
+
+    </ng-container>
+
+    <button class="control prev" (click)="onPreviousClick()">
+        <span class="arrow left"></span>
+    </button>
+    <button class="control next" (click)="onNextClick()">
+        <span class="arrow right"></span>
+    </button>
+
+</section>

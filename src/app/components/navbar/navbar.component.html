@@ -1,0 +1,127 @@
+<header class="container-header">
+    <nav class="content-header">
+
+        <img class="logo" src="./assets/img/logo.png" alt="logo">
+
+        <ul class="menu-navigation">
+            <li class="menu-item">
+                <a href="#/home" class="label-menu-item active">Home</a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="label-menu-item">Series</a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="label-menu-item">Movies</a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="label-menu-item">My list</a>
+            </li>
+        </ul>
+
+        <div class="menu-actions">
+            <div class="menu-action">
+                <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-box">
+                    <input #search formControlName="searchInput" class="search-text" type="text"
+                        placeholder="Search Anything" />
+                    <button class="search-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="search-icon" data-name="Search">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14 11C14 14.3137 11.3137 17 8 17C4.68629 17 2 14.3137 2 11C2 7.68629 4.68629 5 8 5C11.3137 5 14 7.68629 14 11ZM14.3623 15.8506C12.9006 17.7649 10.5945 19 8 19C3.58172 19 0 15.4183 0 11C0 6.58172 3.58172 3 8 3C12.4183 3 16 6.58172 16 11C16 12.1076 15.7749 13.1626 15.368 14.1218L24.0022 19.1352L22.9979 20.8648L14.3623 15.8506Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </button>
+
+                    <div *ngIf="dataSearch.length !== 0" class="search-popup">
+
+                        <div class="card-columns">
+                            <div *ngFor="let search of dataSearch; let i = index; " class="content__shows">
+                                <div>
+                                    <img class="poster" *ngIf="search.backdrop_path === null"
+                                        src="./assets/img/wo-image.png" alt="Poster">
+                                    <img class="poster" *ngIf="search.backdrop_path !== null"
+                                        src="https://image.tmdb.org/t/p/original/{{search.backdrop_path}}" alt="Poster">
+                                    <div class="title-box"></div>
+                                    <h6 class="card-title">{{search.title}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="menu-action">
+
+                <span class="notif-box">
+
+                    <button class="notifications">
+                        <small class="notification-count">+6</small>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="Hawkins-Icon Hawkins-Icon-Standard" data-name="Notification">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M13 4.07092C16.3922 4.55624 18.9998 7.4736 18.9998 11V15.2538C20.0486 15.3307 21.0848 15.4245 22.107 15.5347L21.8926 17.5232C18.7219 17.1813 15.409 17 11.9998 17C8.59056 17 5.27764 17.1813 2.10699 17.5232L1.89258 15.5347C2.91473 15.4245 3.95095 15.3307 4.99978 15.2538V11C4.99978 7.47345 7.6076 4.55599 11 4.07086V2L13 2V4.07092ZM16.9998 15.1287V11C16.9998 8.23858 14.7612 6 11.9998 6C9.23836 6 6.99978 8.23858 6.99978 11V15.1287C8.64041 15.0437 10.3089 15 11.9998 15C13.6907 15 15.3591 15.0437 16.9998 15.1287ZM8.62568 19.3712C8.6621 20.5173 10.1509 22 11.9993 22C13.8477 22 15.3365 20.5173 15.373 19.3712C15.38 19.1489 15.1756 19 14.9531 19H9.04555C8.82308 19 8.61862 19.1489 8.62568 19.3712Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </button>
+
+                    <div class="notification-popup">
+                        <div *ngFor="let movie of dataMovie | slice:10:14; let i = index; ">
+                            <div class="profile-pic">
+                                <img class="" width="100px"
+                                    src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="Poster">
+                            </div>
+                            <div class="notification-body">
+                                Suggestion of the day: {{movie.title}}
+                                <small class="text-muted">2 DAYS AGO</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </span>
+
+            </div>
+            <div class="menu-action">
+
+                <div class="menu-accountdrop">
+
+                    <button class="account-dropdown" data-toggle="dropdown">
+                        <img src="./assets/img/profile.png" alt="Profile icon" class="menu-icon-profile">
+                    </button>
+
+                    <div class="dropdown">
+                        <div>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                </svg>
+                                <span>Manage profiles</span>
+                            </a>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                </svg>
+                                <span>Account</span>
+                            </a>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                                    <path fill-rule="evenodd"
+                                        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                </svg>
+                                <span>Log out</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</header>
